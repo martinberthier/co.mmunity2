@@ -23,16 +23,19 @@ public class Role {
 	
 	private String name;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="roles")
 	private Set<User> users = new HashSet<User> ();
 
 	public Role() {}
 
-	public Role(String name, Set<User> users) {
-		super();
+	public Role(String name) {
 		this.name = name;
-		this.users = users;
 	}
 
-
+	public void addUser(User user) {
+		this.users.add(user);
+	}
+	public void removeUser(User user) {
+		this.users.remove(user);
+	}
 }

@@ -10,6 +10,6 @@ import co.mmunity2.domain.User;
 public interface CategoryRepository  extends JpaRepository<Category, Integer>{
 
 	Category findByName(String name);
-	List<Category> findByUsersContains(User user);
+//	List<Category> findByUsersContains(User user);
 	
 }
