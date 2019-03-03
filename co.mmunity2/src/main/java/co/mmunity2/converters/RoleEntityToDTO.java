@@ -27,7 +27,7 @@ public class RoleEntityToDTO implements Converter<Role, RoleDTO> {
             roleDTO.setId(role.getId().toString());
         }
 		
-		roleDTO.setUsers(userEntityToDTO.convertList(role.getUsers()));
+		//roleDTO.setUsers(userEntityToDTO.convertList(role.getUsers()));
 		
 		return roleDTO;
 	}

@@ -15,6 +15,6 @@ public class CommentDTO {
 	
 	private UserDTO user;
 	
-	private CategoryDTO category;
+	//private CategoryDTO category;
 	
 }

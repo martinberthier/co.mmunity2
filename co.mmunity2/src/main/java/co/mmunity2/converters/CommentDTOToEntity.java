@@ -29,7 +29,7 @@ public class CommentDTOToEntity  implements Converter<CommentDTO, Comment>{
             comment.setId(Integer.valueOf(commentDTO.getId()));
         }
 		
-		comment.setCategory(categoryDTOToEntity.convert(commentDTO.getCategory()));
+		//comment.setCategory(categoryDTOToEntity.convert(commentDTO.getCategory()));
 		
 		comment.setUser(userDTOToEntity.convert(commentDTO.getUser()));
 		
