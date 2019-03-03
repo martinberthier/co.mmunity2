@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import co.mmunity2.converters.CategoryDTOToEntity;
 import co.mmunity2.converters.CategoryEntityToDTO;
@@ -11,6 +12,7 @@ import co.mmunity2.domain.Category;
 import co.mmunity2.dto.CategoryDTO;
 import co.mmunity2.repositories.CategoryRepository;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired

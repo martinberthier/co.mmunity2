@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import co.mmunity2.converters.RoleDTOToEntity;
 import co.mmunity2.converters.RoleEntityToDTO;
@@ -11,6 +12,7 @@ import co.mmunity2.domain.Role;
 import co.mmunity2.dto.RoleDTO;
 import co.mmunity2.repositories.RoleRepository;
 
+@Service
 public class RoleServiceImpl implements RoleService {
 
 	@Autowired

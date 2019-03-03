@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import co.mmunity2.converters.UserDTOToEntity;
 import co.mmunity2.converters.UserEntityToDTO;
@@ -11,6 +12,7 @@ import co.mmunity2.domain.User;
 import co.mmunity2.dto.UserDTO;
 import co.mmunity2.repositories.UserRepository;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	

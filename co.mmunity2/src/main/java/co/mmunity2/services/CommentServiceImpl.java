@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import co.mmunity2.converters.CommentDTOToEntity;
 import co.mmunity2.converters.CommentEntityToDTO;
@@ -11,6 +12,7 @@ import co.mmunity2.domain.Comment;
 import co.mmunity2.dto.CommentDTO;
 import co.mmunity2.repositories.CommentRepository;
 
+@Service
 public class CommentServiceImpl implements CommentService {
 
 	@Autowired
