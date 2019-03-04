@@ -25,7 +25,7 @@ public class UserDTO {
 	
 	private boolean active;
 	
-	private Set<CommentDTO> comments;
+	//private Set<CommentDTO> comments;
 	
 	private Set<RoleDTO> roles;
 	
