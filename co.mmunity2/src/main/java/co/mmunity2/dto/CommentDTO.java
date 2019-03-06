@@ -1,5 +1,8 @@
 package co.mmunity2.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,12 +12,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CommentDTO {
 
+	@JsonIgnore
 	private String id;
 	
 	private String content;
 	
+	@JsonManagedReference
 	private UserDTO user;
 	
-	//private CategoryDTO category;
+	@JsonManagedReference
+	private CategoryDTO category;
 	
 }
