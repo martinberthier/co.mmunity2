@@ -3,11 +3,13 @@ package co.mmunity2.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,15 +24,22 @@ public class Category {
 	
 	private String name;
 
-	@ManyToMany
-	private Set<User> users = new HashSet<User> ();
+	@OneToMany(mappedBy ="category", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+	private Set<Comment> comments = new HashSet<Comment> ();
 	
 	public Category() {}
 	
-	public Category(String name, Set<User> users) {
+	public Category(String name) {
 		super();
 		this.name = name;
-		this.users = users;
+	}
+	
+	public void addComment(Comment comment) {
+		this.comments.add(comment);
+	}
+
+	public void removeComment(Comment comment) {
+		this.comments.remove(comment);
 	}
 	
 }

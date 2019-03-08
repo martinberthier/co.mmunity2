@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -21,5 +22,20 @@ public class Comment {
 	private String content;
 	
 	@ManyToOne
+	@JoinColumn
 	private User user;
+	
+	@ManyToOne
+	@JoinColumn
+	private Category category;
+
+	public Comment() {}
+
+	public Comment(String content, User user, Category category) {
+		super();
+		this.content = content;
+		this.user = user;
+		this.category = category;
+	}
+
 }

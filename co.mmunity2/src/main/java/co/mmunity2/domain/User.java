@@ -3,15 +3,15 @@ package co.mmunity2.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,40 +26,36 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-
 	private String name;
 	
 	private String lastname;
 
 	private String job;
 	
-	@Email
 	private String email;
 
 	private String password;
 	
+	private boolean active;
+	
+	@OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.MERGE})
 	private Set<Comment> comments = new HashSet <Comment>();	
 	
 	@ManyToMany
 	@JoinTable
 	private Set<Role> roles = new HashSet<Role>();
-
-	private boolean active;
 	
 	public User() {}
 
-	public User(@NotEmpty @Size(min = 1, max = 20) String lastname, @NotEmpty @Size(min = 1, max = 20) String name,
-			@NotEmpty @Size(min = 1, max = 20) String job, @Email @NotEmpty @Size(min = 1, max = 20) String email,
-			@NotEmpty @Size(min = 1, max = 20) String password) {
+	public User(String name, String lastname, String job, String email, String password) {
 		super();
-		this.lastname = lastname;
 		this.name = name;
+		this.lastname = lastname;
 		this.job = job;
 		this.email = email;
 		this.password = password;
 		this.active = true;
 	}
-	
 
 	public void addRole(Role role) {
 		this.roles.add(role);
@@ -68,4 +64,13 @@ public class User {
 	public void removeRole(Role role) {
 		this.roles.remove(role);
 	}
+	
+	public void addComment(Comment comment) {
+		this.comments.add(comment);
+	}
+
+	public void removeComment(Comment comment) {
+		this.comments.remove(comment);
+	}
+	
 }
