@@ -14,13 +14,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class RoleDTO {
 
-	@JsonIgnore
+//	@JsonIgnore
 	private String id;
 	
 	private String name;
 	
-	@JsonManagedReference
-	private Set<UserDTO> users;
+//	@JsonManagedReference
+//	private Set<UserDTO> users;
 	
 	
 	

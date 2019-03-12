@@ -12,15 +12,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CommentDTO {
 
-	@JsonIgnore
+//	@JsonIgnore
 	private String id;
 	
 	private String content;
 	
-	@JsonManagedReference
+//	@JsonManagedReference
 	private UserDTO user;
 	
-	@JsonManagedReference
-	private CategoryDTO category;
+//	@JsonManagedReference
+//	private CategoryDTO category;
 	
 }
