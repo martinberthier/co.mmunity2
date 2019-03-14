@@ -25,13 +25,23 @@ public class CommentDTOToEntity  implements Converter<CommentDTO, Comment>{
 		
 		comment.setContent(commentDTO.getContent());
 		
+		comment.setTag(commentDTO.getTag());
+		
 		if (commentDTO.getId() != null) {
             comment.setId(Integer.valueOf(commentDTO.getId()));
         }
 		
-		//comment.setCategory(categoryDTOToEntity.convert(commentDTO.getCategory()));
+//		comment.setCategory(categoryDTOToEntity.convert(commentDTO.getCategory()));
 		
-		comment.setUser(userDTOToEntity.convert(commentDTO.getUser()));
+//		comment.setUser(userDTOToEntity.convert(commentDTO.getUser()));
+		
+		if (commentDTO.getUser() != null && commentDTO.getUser().getId() != null) {
+			comment.setUser(userDTOToEntity.convert(commentDTO.getUser()));
+		}
+		
+		if (commentDTO.getCategory() != null && commentDTO.getCategory().getId() != null) {
+			comment.setCategory(categoryDTOToEntity.convert(commentDTO.getCategory()));
+		}
 		
 		return comment;
 	}

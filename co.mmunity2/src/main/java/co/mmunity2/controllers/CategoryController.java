@@ -12,7 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.mmunity2.converters.CategoryDTOToEntity;
+import co.mmunity2.converters.CategoryEntityToDTO;
+import co.mmunity2.converters.CommentEntityToDTO;
+import co.mmunity2.domain.Comment;
 import co.mmunity2.dto.CategoryDTO;
+import co.mmunity2.dto.CommentDTO;
+import co.mmunity2.repositories.CommentRepository;
 import co.mmunity2.services.CategoryService;
 
 @CrossOrigin
@@ -22,6 +28,15 @@ public class CategoryController {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private CommentRepository commentRepository;
+	
+	@Autowired
+	CategoryDTOToEntity categoryDTOToEntity;
+	
+	@Autowired
+	CommentEntityToDTO commentEntityToDTO;
 	
 	@RequestMapping(value = "/categories", method = RequestMethod.GET)
 	public ResponseEntity<Object> listCategories() {
@@ -33,6 +48,17 @@ public class CategoryController {
 	public ResponseEntity<Object> getCategory(@PathVariable String id) {
 		CategoryDTO category = categoryService.getById(id);
 		return new ResponseEntity<>(category, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/categories/{id}/comments", method = RequestMethod.GET)
+	public ResponseEntity<Object> getCategoryComments(@PathVariable String id) {
+		
+		Set<CommentDTO> comments = 
+		commentEntityToDTO.convertList(
+		commentRepository.findByCategory(categoryDTOToEntity.convert(categoryService.getById(id)))
+		);
+		
+		return new ResponseEntity<>(comments, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/categories", method = RequestMethod.POST)

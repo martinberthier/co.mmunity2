@@ -27,9 +27,9 @@ public class CategoryEntityToDTO  implements Converter <Category, CategoryDTO> {
 			categoryDTO.setId(category.getId().toString());
 		}
 		
-		if (category.getComments() != null) {
-			categoryDTO.setComments(commentEntityToDTO.convertList(category.getComments()));
-		}
+//		if (category.getComments() != null) {
+//			categoryDTO.setComments(commentEntityToDTO.convertList(category.getComments()));
+//		}
 		
 		return categoryDTO;
 	}

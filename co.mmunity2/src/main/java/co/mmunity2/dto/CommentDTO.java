@@ -17,10 +17,12 @@ public class CommentDTO {
 	
 	private String content;
 	
+	private String tag;
+	
 //	@JsonManagedReference
 	private UserDTO user;
 	
 //	@JsonManagedReference
-//	private CategoryDTO category;
+	private CategoryDTO category;
 	
 }

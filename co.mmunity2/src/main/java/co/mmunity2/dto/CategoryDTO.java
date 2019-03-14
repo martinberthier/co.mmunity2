@@ -20,6 +20,6 @@ public class CategoryDTO {
 	private String name;
 	
 //	@JsonBackReference
-	private Set<CommentDTO> comments;
+//	private Set<CommentDTO> comments;
 	
 }

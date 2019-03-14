@@ -28,14 +28,27 @@ public class CommentEntityToDTO implements Converter<Comment, CommentDTO> {
 		
 		commentDTO.setContent(comment.getContent());
 		
+		commentDTO.setTag(comment.getTag());
+		
 		if (comment.getId() != null) {
 			commentDTO.setId(comment.getId().toString());
         }
 		
-        //commentDTO.setCategory(categoryEntityToDTO.convert(comment.getCategory()));
-		
-        commentDTO.setUser(userEntityToDTO.convert(comment.getUser()));
+//        commentDTO.setCategory(categoryEntityToDTO.convert(comment.getCategory()));
+//		
+//        commentDTO.setUser(userEntityToDTO.convert(comment.getUser()));
         
+        if (comment.getUser() != null && comment.getUser().getId() != null) {
+        	comment.getUser().setComments(null);
+        	commentDTO.setUser(userEntityToDTO.convert(comment.getUser()));
+        }
+        
+        if (comment.getCategory() != null && comment.getCategory().getId() != null) {
+        	comment.getCategory().setComments(null);
+        	commentDTO.setCategory(categoryEntityToDTO.convert(comment.getCategory()));
+        }
+		
+		
 		return commentDTO;
 	}
 
