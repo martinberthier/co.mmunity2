@@ -56,12 +56,11 @@ public class ApplicationTests {
 		Role admin = new Role("admin");
 		roles.save(admin);
 		
+		paul.addRole(regular);
+		paul.addRole(admin);
 		paul.generateValidationCode(2);
 		paul.createAccessToken(1);
 		paul.setEnabled(true);
-		
-		paul.addRole(regular);
-		paul.addRole(admin);
 		users.save(paul);
 		
 		juliette.addRole(regular);
