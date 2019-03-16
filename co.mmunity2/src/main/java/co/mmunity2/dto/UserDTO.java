@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserDTO {
 
-	@JsonIgnore
+//	@JsonIgnore
 	private String id;
 	
 	private String name;
@@ -32,11 +32,11 @@ public class UserDTO {
 	@JsonIgnore
 	private boolean active;
 	
-	@JsonBackReference
-	private Set<CommentDTO> comments;
-	
-	@JsonBackReference
-	private Set<RoleDTO> roles;
+//	@JsonBackReference
+//	private Set<CommentDTO> comments;
+//	
+//	@JsonBackReference
+//	private Set<RoleDTO> roles;
 	
 	
 }

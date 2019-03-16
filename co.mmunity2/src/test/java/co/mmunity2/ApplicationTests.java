@@ -75,14 +75,23 @@ public class ApplicationTests {
 		Category poney = new Category("poney");
 		categories.save(poney);
 		
-		Comment firstComment = new Comment("bonjour !", pascal, foot);
+		Comment firstComment = new Comment("bonjour ! ","bonjour", pascal, foot);
 		comments.save(firstComment);
 		
-		Comment secondComment = new Comment("Y a quelqu'un ?", louise, poney);
+		Comment secondComment = new Comment("Y a quelqu'un ?","alone", louise, poney);
 		comments.save(secondComment);
 		
-		Comment thirdComment = new Comment("ça va couper", louise, poney);
+		Comment thirdComment = new Comment("ça va couper","cut", louise, poney);
 		comments.save(thirdComment);
+		
+		Comment fourthComment = new Comment("comment on ajoute des gifs?",null, louise, poney);
+		comments.save(fourthComment);
+		
+		Comment fifthComment = new Comment("c'est facile pourtant ! ",null, pascal, poney);
+		comments.save(fifthComment);
+		
+		Comment sixthComment = new Comment("EZZZZ","celebrate", pascal, poney);
+		comments.save(sixthComment);
 		
 		poney.removeComment(thirdComment);;
 		categories.save(poney);

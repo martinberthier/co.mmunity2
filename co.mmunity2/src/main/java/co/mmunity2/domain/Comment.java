@@ -21,6 +21,8 @@ public class Comment {
 	
 	private String content;
 	
+	private String tag;
+	
 	@ManyToOne
 	@JoinColumn
 	private User user;
@@ -31,9 +33,10 @@ public class Comment {
 
 	public Comment() {}
 
-	public Comment(String content, User user, Category category) {
+	public Comment(String content, String tag, User user, Category category) {
 		super();
 		this.content = content;
+		this.tag = tag;
 		this.user = user;
 		this.category = category;
 	}
