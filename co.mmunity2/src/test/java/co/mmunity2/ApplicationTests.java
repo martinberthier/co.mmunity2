@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import co.mmunity2.domain.Category;
@@ -32,6 +33,9 @@ public class ApplicationTests {
 	@Autowired
 	CategoryRepository categories;
 	
+	@Autowired
+	PasswordEncoder encoder;
+	
 //	@Before
 //	public void setUp() throws Exception {
 //		populate.nettoiePuisCree();
@@ -40,10 +44,10 @@ public class ApplicationTests {
 	@Test
 	public void rolesTest() {
 		
-		User paul = new User("paul","buret","DRH","paulburet@mail.com","123456");
+		User paul = new User("paul","buret","DRH","paulburet@mail.com",encoder.encode("password"));
 		users.save(paul);
 		
-		User juliette = new User("juliette","berthier","stagiaire","juliette@mail.com","mdpsecret");
+		User juliette = new User("juliette","berthier","stagiaire","juliette@mail.com",encoder.encode("password"));
 		users.save(juliette);
 		
 		Role regular = new Role("regular");
@@ -52,21 +56,28 @@ public class ApplicationTests {
 		Role admin = new Role("admin");
 		roles.save(admin);
 		
+		paul.generateValidationCode(2);
+		paul.createAccessToken(1);
+		paul.setEnabled(true);
+		
 		paul.addRole(regular);
 		paul.addRole(admin);
 		users.save(paul);
 		
 		juliette.addRole(regular);
+		juliette.generateValidationCode(2);
+		juliette.createAccessToken(1);
+		juliette.setEnabled(true);
 		users.save(juliette);
 	}
 	
 	@Test
 	public void commentTest() {
 		
-		User pascal = new User("pascal","obispo","intermittant","pobispo@mail.com","123456");
+		User pascal = new User("pascal","obispo","intermittant","pobispo@mail.com",encoder.encode("password"));
 		users.save(pascal);
 		
-		User louise = new User("louise","dorina","pfg","louise@mail.com","mdpsecret");
+		User louise = new User("louise","dorina","pfg","louise@mail.com",encoder.encode("password"));
 		users.save(louise);
 		
 		Category foot = new Category("foot");

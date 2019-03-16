@@ -5,7 +5,10 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +19,18 @@ import co.mmunity2.dto.UserDTO;
 import co.mmunity2.services.UserService;
 
 @CrossOrigin
+@PreAuthorize("hasRole('ROLE_regular')")
 @RestController
 @RequestMapping(value = "/community")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@GetMapping("/me")
+	public String me() {
+		return SecurityContextHolder.getContext().getAuthentication().getName();
+	}
 	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<Object> listUsers() {

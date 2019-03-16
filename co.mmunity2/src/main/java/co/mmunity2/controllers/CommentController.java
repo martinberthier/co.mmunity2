@@ -5,6 +5,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import co.mmunity2.dto.CommentDTO;
 import co.mmunity2.services.CommentService;
 
 @CrossOrigin
+@PreAuthorize("hasRole('ROLE_regular')")
 @RestController
 @RequestMapping(value = "/community")
 public class CommentController {
