@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.mmunity2.converters.CommentDTOToEntity;
 import co.mmunity2.dto.CommentDTO;
+import co.mmunity2.repositories.CommentRepository;
 import co.mmunity2.services.CommentService;
 
 @CrossOrigin
@@ -46,10 +48,11 @@ public class CommentController {
 	
 	@RequestMapping(value = "/comments/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Object> modifyComment(@PathVariable String id, @RequestBody CommentDTO commentDTO) {
-		if(id.equals(commentDTO.getId())) {
+		System.out.println("yoloylyoyoy"+ id);
+			
 			return new ResponseEntity<>(commentService.saveOrUpdate(commentDTO), HttpStatus.OK);
-		}
-		return null;
+		
+
 	}
 	
 	@RequestMapping(value = "/comments/{id}", method = RequestMethod.DELETE)
