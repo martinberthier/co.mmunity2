@@ -6,10 +6,14 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.mmunity2.converters.RoleEntityToDTO;
 import co.mmunity2.converters.UserDTOToEntity;
 import co.mmunity2.converters.UserEntityToDTO;
+import co.mmunity2.domain.Role;
 import co.mmunity2.domain.User;
+import co.mmunity2.dto.RoleDTO;
 import co.mmunity2.dto.UserDTO;
+import co.mmunity2.repositories.RoleRepository;
 import co.mmunity2.repositories.UserRepository;
 
 @Service
@@ -18,6 +22,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private RoleRepository roles;
+	
+	@Autowired
+	private RoleEntityToDTO roleEntityToDTO;
 
 	@Autowired
 	private UserEntityToDTO userEntityToDTO;
@@ -45,7 +55,13 @@ public class UserServiceImpl implements UserService {
 		//findbyid role regular puis conversion
 		//userDTO.addRole (regular)
 		
+//		Role regular = (roles.findByName("regular"));
+		
 		User user = userRepository.save(userDTOToEntity.convert(userDTO));
+//		user.setEnabled(true);
+//		user.addRole(regular);
+//		userRepository.save(user);
+		
 		return userEntityToDTO.convert(user);
 	}
 
