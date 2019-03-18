@@ -31,13 +31,13 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	boolean existsByEmail(String email);
 
-	User findByApiToken(String apiToken);
+//	User findByApiToken(String apiToken);
 
 	User findByEmail(String email);
 
 	User findByLastIp(String ip);
 
-	User findByValidationCode(String code);
+//	User findByValidationCode(String code);
 
 	List<User> findByRolesContains(Role role);
 
@@ -47,7 +47,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 
 	List<User> findByLastAccessDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
 
-	List<User> findByApiTokenExpirationDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
+//	List<User> findByApiTokenExpirationDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
 
 	////fin JWT
 }

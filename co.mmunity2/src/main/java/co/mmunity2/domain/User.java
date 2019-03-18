@@ -48,17 +48,17 @@ public class User {
 	@JoinTable
 	private Set<Role> roles = new HashSet<Role>();
 	
-	@Column(unique = true)
-	private String apiToken;
-
-	private LocalDateTime apiTokenExpirationDate;
-
-	private String validationCode;
-
-	private LocalDateTime validationCodeExpirationDate;
-
 	private boolean enabled;
-
+	
+//	@Column(unique = true)
+//	private String apiToken;
+//
+//	private LocalDateTime apiTokenExpirationDate;
+//
+//	private String validationCode;
+//
+//	private LocalDateTime validationCodeExpirationDate;
+//
 	private String lastIp;
 
 	LocalDateTime lastAccessDate;

@@ -39,15 +39,15 @@ public class UserDTO {
 //	@JsonBackReference
 	private Set<RoleDTO> roles;
 	
-	private String apiToken;
-
-	private LocalDateTime apiTokenExpirationDate;
-
-	private String validationCode;
-
-	private LocalDateTime validationCodeExpirationDate;
-
 	private boolean enabled;
+	
+//	private String apiToken;
+//
+//	private LocalDateTime apiTokenExpirationDate;
+//
+//	private String validationCode;
+//
+//	private LocalDateTime validationCodeExpirationDate;
 
 	private String lastIp;
 

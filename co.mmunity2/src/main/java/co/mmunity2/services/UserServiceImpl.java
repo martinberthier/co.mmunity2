@@ -42,6 +42,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDTO saveOrUpdate(UserDTO userDTO) {
+		//findbyid role regular puis conversion
+		//userDTO.addRole (regular)
+		
 		User user = userRepository.save(userDTOToEntity.convert(userDTO));
 		return userEntityToDTO.convert(user);
 	}

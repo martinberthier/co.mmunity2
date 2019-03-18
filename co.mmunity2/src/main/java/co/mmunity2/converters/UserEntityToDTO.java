@@ -43,16 +43,16 @@ public class UserEntityToDTO implements Converter<User, UserDTO> {
 		
 		userDTO.setRoles(roleEntityToDTO.convertList(user.getRoles()));
 		
-		userDTO.setApiToken(user.getApiToken());
-		
-		userDTO.setApiTokenExpirationDate(user.getApiTokenExpirationDate());
-		
-		userDTO.setValidationCode(user.getValidationCode());
-		
-		userDTO.setValidationCodeExpirationDate(user.getValidationCodeExpirationDate());
-		
 		userDTO.setEnabled(user.isEnabled());
 		
+//		userDTO.setApiToken(user.getApiToken());
+//		
+//		userDTO.setApiTokenExpirationDate(user.getApiTokenExpirationDate());
+//		
+//		userDTO.setValidationCode(user.getValidationCode());
+//		
+//		userDTO.setValidationCodeExpirationDate(user.getValidationCodeExpirationDate());
+//
 		userDTO.setLastIp(user.getLastIp());
 		
 		userDTO.setLastAccessDate(user.getLastAccessDate());

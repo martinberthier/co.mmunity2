@@ -44,10 +44,10 @@ public class ApplicationTests {
 	@Test
 	public void rolesTest() {
 		
-		User paul = new User("paul","buret","DRH","paulburet@mail.com",encoder.encode("password"));
+		User paul = new User("paul","buret","DRH","paulburet@mail.com", encoder.encode("password"));
 		users.save(paul);
 		
-		User juliette = new User("juliette","berthier","stagiaire","juliette@mail.com",encoder.encode("password"));
+		User juliette = new User("juliette","berthier","stagiaire","juliette@mail.com", encoder.encode("password"));
 		users.save(juliette);
 		
 		Role regular = new Role("regular");
@@ -58,14 +58,14 @@ public class ApplicationTests {
 		
 		paul.addRole(regular);
 		paul.addRole(admin);
-		paul.generateValidationCode(2);
-		paul.createAccessToken(1);
+//		paul.generateValidationCode(2);
+//		paul.createAccessToken(1);
 		paul.setEnabled(true);
 		users.save(paul);
 		
 		juliette.addRole(regular);
-		juliette.generateValidationCode(2);
-		juliette.createAccessToken(1);
+//		juliette.generateValidationCode(2);
+//		juliette.createAccessToken(1);
 		juliette.setEnabled(true);
 		users.save(juliette);
 	}

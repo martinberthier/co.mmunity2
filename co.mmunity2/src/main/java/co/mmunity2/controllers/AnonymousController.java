@@ -61,7 +61,7 @@ public class AnonymousController {
 
 		String jwt = jwtService.createJWT(user.getEmail(), roles);
 
-		logger.trace("JWT crée pour " + user.getEmail() + " : " + jwt);
+		logger.trace("JWT créé pour " + user.getEmail() + " : " + jwt);
 
 		return ResponseEntity.ok().body(jwt);
 
