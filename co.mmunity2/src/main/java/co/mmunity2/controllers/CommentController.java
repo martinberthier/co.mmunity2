@@ -48,8 +48,8 @@ public class CommentController {
 	
 	@RequestMapping(value = "/comments/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Object> modifyComment(@PathVariable String id, @RequestBody CommentDTO commentDTO) {
-		System.out.println("yoloylyoyoy"+ id);
-			
+	
+			commentDTO.setId(id);
 			return new ResponseEntity<>(commentService.saveOrUpdate(commentDTO), HttpStatus.OK);
 		
 
