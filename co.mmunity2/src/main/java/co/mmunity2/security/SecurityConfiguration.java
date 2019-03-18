@@ -65,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated().and()
 
 				// Permet de capturer le header Authorization
-				.httpBasic().and()
+				//.httpBasic().and()
 
 				// filtre qui va disséquer la requete http pour authentifier les requetes
 				.addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)

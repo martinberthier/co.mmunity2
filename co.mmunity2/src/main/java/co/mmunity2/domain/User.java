@@ -91,23 +91,26 @@ public class User {
 		this.comments.remove(comment);
 	}
 	
-	public String generateValidationCode(int expirationDays) {
-		this.validationCode = UUID.randomUUID().toString();
-		this.validationCodeExpirationDate = LocalDateTime.now().plusDays(expirationDays);
-		return this.validationCode;
-	}
+//	public String generateValidationCode(int expirationDays) {
+//		this.validationCode = UUID.randomUUID().toString();
+//		this.validationCodeExpirationDate = LocalDateTime.now().plusDays(expirationDays);
+//		return this.validationCode;
+//	}
+	// pour confirmation par mail
 
-	public String createAccessToken(int expirationDays) {
-		this.apiToken = UUID.randomUUID().toString();
-		this.apiTokenExpirationDate = LocalDateTime.now().plusDays(expirationDays);
-		return this.apiToken;
-	}
-
-	public void revokeAccess() {
-		this.validationCode = "";
-		this.validationCodeExpirationDate=LocalDateTime.now().minusMinutes(5);
-		this.apiToken = "";
-		this.apiTokenExpirationDate = LocalDateTime.now().minusMinutes(5);
-	}
+	
+	// pour API TOKEN
+//	public String createAccessToken(int expirationDays) {
+//		this.apiToken = UUID.randomUUID().toString();
+//		this.apiTokenExpirationDate = LocalDateTime.now().plusDays(expirationDays);
+//		return this.apiToken;
+//	}
+//
+//	public void revokeAccess() {
+//		this.validationCode = "";
+//		this.validationCodeExpirationDate=LocalDateTime.now().minusMinutes(5);
+//		this.apiToken = "";
+//		this.apiTokenExpirationDate = LocalDateTime.now().minusMinutes(5);
+//	}
 	
 }
