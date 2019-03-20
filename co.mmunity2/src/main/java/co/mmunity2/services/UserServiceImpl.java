@@ -1,9 +1,13 @@
 package co.mmunity2.services;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import co.mmunity2.converters.RoleEntityToDTO;
@@ -35,6 +39,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDTOToEntity userDTOToEntity;
 	
+	@Autowired
+	PasswordEncoder encoder;
+	
 	@Override
 	public Set<UserDTO> listAll() {
 		Set<User> users = new HashSet<>();
@@ -52,16 +59,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDTO saveOrUpdate(UserDTO userDTO) {
-		//findbyid role regular puis conversion
-		//userDTO.addRole (regular)
+		//donner le role regular aux nouveaux user, avec une conversion de DTO vers entité
 		
-//		Role regular = (roles.findByName("regular"));
+		userDTO.setPassword(encoder.encode(userDTO.getPassword()));
 		
+		Role regular = (roles.findByName("regular"));
+		
+		userDTO.setRoles(roleEntityToDTO.convertList(Stream.of(regular).collect(Collectors.toSet())));
+		userDTO.setEnabled(true);
 		User user = userRepository.save(userDTOToEntity.convert(userDTO));
-//		user.setEnabled(true);
-//		user.addRole(regular);
-//		userRepository.save(user);
-		
 		return userEntityToDTO.convert(user);
 	}
 

@@ -34,6 +34,7 @@ public class StartupTasks implements ApplicationRunner{
 //		
 //		Role regular = new Role("regular");
 //		roles.save(regular);
+//		
 //			}
 //		} 
 	}

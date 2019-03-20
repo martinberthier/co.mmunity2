@@ -32,11 +32,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// CSRF protege les requete autres que GET par le passage d'un token dedié
 		// JWT lorsqu'utilisé et stocké coté front ailleurs que dans un cookie n'a pas
 		// besoin de protection CSRF. ce n'est pas le browser qui authentifie mais ajax
-		// avce le jwt
+		// avec le jwt
 		// Nénamoins le JWT est plus exposé au attaques XSS, car si un autre site accède
 		// au localstorage via un js malicieux il pique jwt
 		
-		//EN GROS il faut utiliser le localstorage du suer pour stocker le jwt ET prtoger son front des failles XSS
+		//EN GROS il faut utiliser le localstorage du user pour stocker le jwt ET proteger son front des failles XSS
 		//Certains frameworks front le proposent par exemple en nettoyant les balises script des les données saisies dans des formulaires
 
 		/*
