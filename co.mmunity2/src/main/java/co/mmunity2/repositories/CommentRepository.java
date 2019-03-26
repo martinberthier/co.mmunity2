@@ -11,5 +11,6 @@ public interface CommentRepository extends JpaRepository <Comment, Integer>{
 	
 //	Set<Comment> findByCategoryNameContainsIgnoreCase(String name);
 	Set<Comment> findByCategory(Category category);
+	Set<Comment> findByCategoryOrderByIdDesc(Category category);
 	
 }

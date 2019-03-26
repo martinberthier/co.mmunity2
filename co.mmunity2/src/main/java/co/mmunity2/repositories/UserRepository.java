@@ -35,7 +35,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 
 	User findByEmail(String email);
 
-	User findByLastIp(String ip);
+//	User findByLastIp(String ip);
 
 //	User findByValidationCode(String code);
 
@@ -45,7 +45,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 
 	List<User> findByEnabledFalseOrderByEmailAsc();
 
-	List<User> findByLastAccessDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
+//	List<User> findByLastAccessDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
 
 //	List<User> findByApiTokenExpirationDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
 

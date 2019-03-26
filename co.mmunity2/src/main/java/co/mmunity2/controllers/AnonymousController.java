@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.mmunity2.converters.UserEntityToDTO;
 import co.mmunity2.domain.Role;
 import co.mmunity2.domain.User;
 import co.mmunity2.dto.JSONCredential;
+import co.mmunity2.dto.JwtResponse;
 import co.mmunity2.dto.UserDTO;
 import co.mmunity2.repositories.UserRepository;
 import co.mmunity2.security.JWTService;
@@ -33,6 +35,9 @@ public class AnonymousController {
 	@Autowired
 	private UserRepository users;
 
+	@Autowired
+	private UserEntityToDTO userEntityToDTO;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -67,10 +72,12 @@ public class AnonymousController {
 		}
 
 		String jwt = jwtService.createJWT(user.getEmail(), roles);
+		
+		JwtResponse jwtResponse = new JwtResponse(jwt, userEntityToDTO.convert(user));
 
-		logger.trace("JWT créé pour " + user.getEmail() + " : " + jwt);
+		logger.trace("JWT créé pour " + user.getEmail() + " : " + jwtResponse);
 
-		return ResponseEntity.ok().body(jwt);
+		return ResponseEntity.ok().body(jwtResponse);
 
 	}
 	

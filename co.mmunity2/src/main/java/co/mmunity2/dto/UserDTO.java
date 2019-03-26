@@ -49,9 +49,9 @@ public class UserDTO {
 //
 //	private LocalDateTime validationCodeExpirationDate;
 
-	private String lastIp;
-
-	LocalDateTime lastAccessDate;
+//	private String lastIp;
+//
+//	LocalDateTime lastAccessDate;
 	
 	
 }

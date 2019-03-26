@@ -45,9 +45,9 @@ public class UserDTOToEntity implements Converter<UserDTO, User> {
 //		
 //		user.setValidationCodeExpirationDate(userDTO.getValidationCodeExpirationDate());
 //		
-		user.setLastIp(userDTO.getLastIp());
-		
-		user.setLastAccessDate(userDTO.getLastAccessDate());
+//		user.setLastIp(userDTO.getLastIp());
+//		
+//		user.setLastAccessDate(userDTO.getLastAccessDate());
 		
 		user.setRoles(roleDTOToEntity.convertList(userDTO.getRoles()));
 		

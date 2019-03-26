@@ -59,9 +59,9 @@ public class User {
 //
 //	private LocalDateTime validationCodeExpirationDate;
 //
-	private String lastIp;
-
-	LocalDateTime lastAccessDate;
+//	private String lastIp;
+//
+//	LocalDateTime lastAccessDate;
 	
 	public User() {}
 

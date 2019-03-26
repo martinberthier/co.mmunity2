@@ -57,7 +57,8 @@ public class CategoryController {
 		
 		Set<CommentDTO> comments = 
 		commentEntityToDTO.convertList(
-		commentRepository.findByCategory(categoryDTOToEntity.convert(categoryService.getById(id)))
+//		commentRepository.findByCategory(categoryDTOToEntity.convert(categoryService.getById(id)))
+		commentRepository.findByCategoryOrderByIdDesc(categoryDTOToEntity.convert(categoryService.getById(id)))
 		);
 		
 		return new ResponseEntity<>(comments, HttpStatus.OK);

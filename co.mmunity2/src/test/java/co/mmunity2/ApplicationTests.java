@@ -76,7 +76,7 @@ public class ApplicationTests {
 		User pascal = new User("pascal","obispo","intermittant","pobispo@mail.com",encoder.encode("password"));
 		users.save(pascal);
 		
-		User louise = new User("louise","dorina","pfg","louise@mail.com",encoder.encode("password"));
+		User louise = new User("louise","dorina","pdg","louise@mail.com",encoder.encode("password"));
 		users.save(louise);
 		
 		Category foot = new Category("foot");
