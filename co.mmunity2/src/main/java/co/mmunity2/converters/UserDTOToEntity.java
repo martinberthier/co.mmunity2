@@ -37,6 +37,10 @@ public class UserDTOToEntity implements Converter<UserDTO, User> {
 		
 		user.setEnabled(userDTO.isEnabled());
 		
+//		if (userDTO.getId() != null) {
+//			user.setId(Integer.valueOf(userDTO.getId()));
+//        }
+		
 //		user.setApiToken(userDTO.getApiToken());
 //		
 //		user.setApiTokenExpirationDate(userDTO.getApiTokenExpirationDate());

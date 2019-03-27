@@ -68,6 +68,37 @@ public class ApplicationTests {
 //		juliette.createAccessToken(1);
 		juliette.setEnabled(true);
 		users.save(juliette);
+		
+		//////////////// Comments avec différents auteurs
+		
+		User antoine = new User("antoine","peglion","assistant pdg","antoine@mail.com", encoder.encode("password"));
+		users.save(antoine);
+		
+		User alexis = new User("alexis","journault","concepteur redacteur","alexis@mail.com", encoder.encode("password"));
+		users.save(alexis);
+		
+		antoine.addRole(regular);
+		antoine.setEnabled(true);
+		users.save(antoine);
+		
+		alexis.addRole(regular);
+		alexis.setEnabled(true);
+		users.save(alexis);
+		
+		Category cuisine = new Category("cuisine");
+		categories.save(cuisine);
+		
+		Comment firstComment = new Comment("j'ai faim! ","food", alexis, cuisine);
+		comments.save(firstComment);
+		
+		Comment secondComment = new Comment("qui veut une pizza ce midi ? ","pizza", alexis, cuisine);
+		comments.save(secondComment);
+		
+		Comment thirdComment = new Comment("En ce qui me concerne, je suis plutôt un amateur de bons petits plats fait maison, et vous? ","cook", antoine, cuisine);
+		comments.save(thirdComment);
+		
+		
+		
 	}
 	
 	@Test
@@ -107,5 +138,6 @@ public class ApplicationTests {
 		categories.save(poney);
 		
 	}
+	
 
 }
