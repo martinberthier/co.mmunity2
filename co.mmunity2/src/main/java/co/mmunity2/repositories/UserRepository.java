@@ -1,6 +1,7 @@
 package co.mmunity2.repositories;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,5 +27,28 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 //	
 //	User findByName(String name);
 	
+	/////JWT
+	
+	boolean existsByEmail(String email);
+
+//	User findByApiToken(String apiToken);
+
+	User findByEmail(String email);
+
+//	User findByLastIp(String ip);
+
+//	User findByValidationCode(String code);
+
+	List<User> findByRolesContains(Role role);
+
+	List<User> findByEnabledTrueOrderByEmailAsc();
+
+	List<User> findByEnabledFalseOrderByEmailAsc();
+
+//	List<User> findByLastAccessDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
+
+//	List<User> findByApiTokenExpirationDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
+
+	////fin JWT
 }
 

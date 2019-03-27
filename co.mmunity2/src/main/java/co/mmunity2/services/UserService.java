@@ -10,7 +10,7 @@ public interface UserService {
 
 	UserDTO getById(String id);
 
-	UserDTO saveOrUpdate(UserDTO role);
+	UserDTO saveOrUpdate(UserDTO user);
 
     void delete(String id);
     

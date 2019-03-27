@@ -1,5 +1,6 @@
 package co.mmunity2.dto;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -36,7 +37,21 @@ public class UserDTO {
 //	private Set<CommentDTO> comments;
 //	
 //	@JsonBackReference
-//	private Set<RoleDTO> roles;
+	private Set<RoleDTO> roles;
+	
+	private boolean enabled;
+	
+//	private String apiToken;
+//
+//	private LocalDateTime apiTokenExpirationDate;
+//
+//	private String validationCode;
+//
+//	private LocalDateTime validationCodeExpirationDate;
+
+//	private String lastIp;
+//
+//	LocalDateTime lastAccessDate;
 	
 	
 }

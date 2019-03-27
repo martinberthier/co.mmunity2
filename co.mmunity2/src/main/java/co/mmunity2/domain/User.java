@@ -1,9 +1,12 @@
 package co.mmunity2.domain;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -45,6 +48,21 @@ public class User {
 	@JoinTable
 	private Set<Role> roles = new HashSet<Role>();
 	
+	private boolean enabled;
+	
+//	@Column(unique = true)
+//	private String apiToken;
+//
+//	private LocalDateTime apiTokenExpirationDate;
+//
+//	private String validationCode;
+//
+//	private LocalDateTime validationCodeExpirationDate;
+//
+//	private String lastIp;
+//
+//	LocalDateTime lastAccessDate;
+	
 	public User() {}
 
 	public User(String name, String lastname, String job, String email, String password) {
@@ -72,5 +90,27 @@ public class User {
 	public void removeComment(Comment comment) {
 		this.comments.remove(comment);
 	}
+	
+//	public String generateValidationCode(int expirationDays) {
+//		this.validationCode = UUID.randomUUID().toString();
+//		this.validationCodeExpirationDate = LocalDateTime.now().plusDays(expirationDays);
+//		return this.validationCode;
+//	}
+	// pour confirmation par mail
+
+	
+	// pour API TOKEN
+//	public String createAccessToken(int expirationDays) {
+//		this.apiToken = UUID.randomUUID().toString();
+//		this.apiTokenExpirationDate = LocalDateTime.now().plusDays(expirationDays);
+//		return this.apiToken;
+//	}
+//
+//	public void revokeAccess() {
+//		this.validationCode = "";
+//		this.validationCodeExpirationDate=LocalDateTime.now().minusMinutes(5);
+//		this.apiToken = "";
+//		this.apiTokenExpirationDate = LocalDateTime.now().minusMinutes(5);
+//	}
 	
 }

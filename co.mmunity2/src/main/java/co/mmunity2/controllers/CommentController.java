@@ -5,6 +5,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import co.mmunity2.repositories.CommentRepository;
 import co.mmunity2.services.CommentService;
 
 @CrossOrigin
+@PreAuthorize("hasRole('ROLE_regular')")
 @RestController
 @RequestMapping(value = "/community")
 public class CommentController {
@@ -48,11 +50,12 @@ public class CommentController {
 	
 	@RequestMapping(value = "/comments/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Object> modifyComment(@PathVariable String id, @RequestBody CommentDTO commentDTO) {
+
+			//commentDTO.setId(id);
+			//return new ResponseEntity<>(commentService.saveOrUpdate(commentDTO), HttpStatus.OK);
 	
 			commentDTO.setId(id);
 			return new ResponseEntity<>(commentService.saveOrUpdate(commentDTO), HttpStatus.OK);
-		
-
 	}
 	
 	@RequestMapping(value = "/comments/{id}", method = RequestMethod.DELETE)
