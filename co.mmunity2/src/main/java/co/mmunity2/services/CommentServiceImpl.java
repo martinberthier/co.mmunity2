@@ -71,12 +71,14 @@ public class CommentServiceImpl implements CommentService {
 		return null;
 	}
 
+	//ne fonctionne pas
 //	@Override
 //	public CommentDTO saveOrUpdate(CommentDTO commentDTO) {
 //		Comment comment = commentRepository.save(commentDTOToEntity.convert(	commentDTO));
 //		return commentEntityToDTO.convert(comment);
 //	}
 //	
+	
 	@Override
 	public CommentDTO saveOrUpdate(CommentDTO commentDTO) {
 		
@@ -92,22 +94,30 @@ public class CommentServiceImpl implements CommentService {
 			
 		commentDTO.setCategory(categoryEntityToDTO.convert(category));
 			
+		
+		
+		// tentative de bricolage, mais ne résoud pas le pb
 //		Set<Role> rolesOfUser = user.getRoles();
-//			
 //		List <Role> ArrayRoleOfUser = new ArrayList <Role>(rolesOfUser);
-//			
 //		roles.save(ArrayRoleOfUser.get(0));
-//
 //		users.save(user);
 		
+		//ici, return un commentDTO avec user pas null
+		// alors pourquoi est ce que le user devient null quand on save le comment ?
 //		return commentDTO;
 
 		//test du comment envoyé en bdd : return user null
 //		Comment comment = commentDTOToEntity.convert(commentDTO);
 //		return commentEntityToDTO.convert(comment);
 		
-		//cette ligne pose pb
+		//c'est cette ligne qui pose pb : 
+		//la méthode "commentRepository.save" renvoie :
+		//org.hibernate.TransientPropertyValueException: 
+		//object references an unsaved transient instance
+		// - save the transient instance before flushing : 
+		//co.mmunity2.domain.Comment.user -> co.mmunity2.domain.User
 		Comment comment = commentRepository.save(commentDTOToEntity.convert(commentDTO));
+		
 		return commentEntityToDTO.convert(comment);
 	}
 
