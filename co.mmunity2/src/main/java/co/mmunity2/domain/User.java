@@ -41,7 +41,8 @@ public class User {
 	
 	private boolean active;
 	
-	@OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+//	@OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+	@OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Comment> comments = new HashSet <Comment>();	
 	
 	@ManyToMany

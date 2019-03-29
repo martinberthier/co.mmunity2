@@ -3,6 +3,7 @@ package co.mmunity2.repositories;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -44,6 +45,8 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	List<User> findByEnabledTrueOrderByEmailAsc();
 
 	List<User> findByEnabledFalseOrderByEmailAsc();
+
+	void save(Optional<User> user);
 
 //	List<User> findByLastAccessDateBetweenOrderByEmailAsc(LocalDateTime debut, LocalDateTime fin);
 
