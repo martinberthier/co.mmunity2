@@ -65,11 +65,11 @@ public class Populate {
 		Role admin = new Role("admin");
 		roles.save(admin);
 		
-		paul.addRole(regular);
-		paul.addRole(admin);
+		paul.setRole(regular);
+//		paul.addRole(admin);
 		users.save(paul);
 		
-		juliette.addRole(regular);
+		juliette.setRole(regular);
 		users.save(juliette);
 			
 	}

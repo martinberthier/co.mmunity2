@@ -37,7 +37,7 @@ public class UserDTO {
 //	private Set<CommentDTO> comments;
 //	
 //	@JsonBackReference
-	private Set<RoleDTO> roles;
+	private RoleDTO role;
 	
 	private boolean enabled;
 	

@@ -103,12 +103,12 @@ public class CommentServiceImpl implements CommentService {
 //		return commentDTO;
 
 		//test du comment envoyé en bdd : return user null
-//		Comment comment = commentDTOToEntity.convert(commentDTO);
-//		return commentEntityToDTO.convert(comment);
+		Comment comment = commentDTOToEntity.convert(commentDTO);
+		return commentEntityToDTO.convert(comment);
 		
 		//cette ligne pose pb
-		Comment comment = commentRepository.save(commentDTOToEntity.convert(commentDTO));
-		return commentEntityToDTO.convert(comment);
+//		Comment comment = commentRepository.save(commentDTOToEntity.convert(commentDTO));
+//		return commentEntityToDTO.convert(comment);
 	}
 
 

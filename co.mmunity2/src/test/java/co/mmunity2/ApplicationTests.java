@@ -56,14 +56,14 @@ public class ApplicationTests {
 		Role admin = new Role("admin");
 		roles.save(admin);
 		
-		paul.addRole(regular);
-		paul.addRole(admin);
+		paul.setRole(regular);
+//		paul.addRole(admin);
 //		paul.generateValidationCode(2);
 //		paul.createAccessToken(1);
 		paul.setEnabled(true);
 		users.save(paul);
 		
-		juliette.addRole(regular);
+		juliette.setRole(regular);
 //		juliette.generateValidationCode(2);
 //		juliette.createAccessToken(1);
 		juliette.setEnabled(true);
@@ -77,11 +77,11 @@ public class ApplicationTests {
 		User alexis = new User("alexis","journault","concepteur redacteur","alexis@mail.com", encoder.encode("password"));
 		users.save(alexis);
 		
-		antoine.addRole(regular);
+		antoine.setRole(regular);
 		antoine.setEnabled(true);
 		users.save(antoine);
 		
-		alexis.addRole(regular);
+		alexis.setRole(regular);
 		alexis.setEnabled(true);
 		users.save(alexis);
 		

@@ -53,7 +53,7 @@ public class UserDTOToEntity implements Converter<UserDTO, User> {
 //		
 //		user.setLastAccessDate(userDTO.getLastAccessDate());
 		
-		user.setRoles(roleDTOToEntity.convertList(userDTO.getRoles()));
+		user.setRole(roleDTOToEntity.convert(userDTO.getRole()));
 		
 //		user.setComments(commentDTOToEntity.convertList(userDTO.getComments()));
 		

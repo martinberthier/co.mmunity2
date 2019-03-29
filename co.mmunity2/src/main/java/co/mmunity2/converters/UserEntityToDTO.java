@@ -41,7 +41,7 @@ public class UserEntityToDTO implements Converter<User, UserDTO> {
 		
 //		userDTO.setComments(commentEntityToDTO.convertList(user.getComments()));
 		
-		userDTO.setRoles(roleEntityToDTO.convertList(user.getRoles()));
+		userDTO.setRole(roleEntityToDTO.convert(user.getRole()));
 		
 		userDTO.setEnabled(user.isEnabled());
 		

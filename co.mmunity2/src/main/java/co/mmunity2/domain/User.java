@@ -12,8 +12,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -45,9 +47,9 @@ public class User {
 	@OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Comment> comments = new HashSet <Comment>();	
 	
-	@ManyToMany
-	@JoinTable
-	private Set<Role> roles = new HashSet<Role>();
+	@ManyToOne
+	@JoinColumn
+	private Role role;
 	
 	private boolean enabled;
 	
@@ -76,13 +78,7 @@ public class User {
 		this.active = true;
 	}
 
-	public void addRole(Role role) {
-		this.roles.add(role);
-	}
 
-	public void removeRole(Role role) {
-		this.roles.remove(role);
-	}
 	
 	public void addComment(Comment comment) {
 		this.comments.add(comment);
