@@ -40,7 +40,7 @@ public class JWTFilter extends OncePerRequestFilter {
 		logger.trace(jwt);
 		
 		
-		// Créer le contexte de sécurité à partir du jwt via le jwtservice (homemade)
+		// Créer le contexte de sécurité à partir du jwt via le jwtservice
 		try {
 			
 			UsernamePasswordAuthenticationToken auth = jwtService.getAuthenticationFromJWT(jwt);

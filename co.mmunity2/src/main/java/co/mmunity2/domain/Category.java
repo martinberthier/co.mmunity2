@@ -24,7 +24,8 @@ public class Category {
 	
 	private String name;
 
-	@OneToMany(mappedBy ="category", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+//	@OneToMany(mappedBy ="category", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.MERGE})
+	@OneToMany(mappedBy="category", fetch = FetchType.EAGER)
 	private Set<Comment> comments = new HashSet<Comment> ();
 	
 	public Category() {}
