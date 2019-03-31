@@ -25,7 +25,7 @@ public class Role {
 	
 	private String name;
 	
-	@ManyToMany(mappedBy="roles", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="roles", fetch = FetchType.EAGER)
 	private Set<User> users = new HashSet<User> ();
 
 	public Role() {}
