@@ -82,12 +82,14 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public CommentDTO saveOrUpdate(CommentDTO commentDTO) {
 		
+//		commentRepository.save(commentDTOToEntity.convert(commentDTO));
+		
 		Integer idUser = Integer.valueOf((commentDTO.getUser()).getId());
 		
 		User user = (users.findById(idUser)).get();
 			
 		commentDTO.setUser(userEntityToDTO.convert(user));
-			
+		
 		Integer idCategory = Integer.valueOf((commentDTO.getCategory()).getId());
 			
 		Category category = (categories.findById(idCategory).get());
@@ -97,10 +99,17 @@ public class CommentServiceImpl implements CommentService {
 		
 		
 		// tentative de bricolage, mais ne résoud pas le pb
-//		Set<Role> rolesOfUser = user.getRoles();
-//		List <Role> ArrayRoleOfUser = new ArrayList <Role>(rolesOfUser);
-//		roles.save(ArrayRoleOfUser.get(0));
-//		users.save(user);
+		Set<Role> rolesOfUser = user.getRoles();
+		//tambouille
+		//roles.save((rolesOfUser.findByName("regular")).get());
+//		Role regular = (roles.findByName("regular"));
+//		roles.save(regular);
+//		rolesOfUser.add(regular);
+//		user.setRoles(rolesOfUser);
+		//
+		List <Role> ArrayRoleOfUser = new ArrayList <Role>(rolesOfUser);
+		roles.save(ArrayRoleOfUser.get(0));
+		users.save(user);
 		
 		//ici, return un commentDTO avec user pas null
 		// alors pourquoi est ce que le user devient null quand on save le comment ?
